@@ -17,7 +17,16 @@ stages{
        steps{
            sh 'mvn clean install'
        }
-   } 
+   } stage('test'){
+       steps {
+           
+           sh 'mvn test package'
+       }
+       stage('deploy'){
+       steps {
+           
+           sh 'mvn deploy package'
+       }
  
 }
 }
