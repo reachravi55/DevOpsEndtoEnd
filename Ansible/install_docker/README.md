@@ -36,7 +36,7 @@ Usage
 -----
 
 Usage :  ansible-playbook docker_playbook.yml -K
-BECOME password: <sudo-user-password> 
+BECOME password: sudo-user-password 
 
 
 
