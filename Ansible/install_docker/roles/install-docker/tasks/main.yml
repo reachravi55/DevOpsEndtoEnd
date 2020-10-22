@@ -1,0 +1,27 @@
+---
+# Tasks file for Docker installation
+- name: update all packages
+  yum:
+    name: '*'
+    state: latest
+- name: Install list of dependant packages
+  yum:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+- name: Add CentOS_o repository
+  shell: yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo 
+- name: install docker
+  yum:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+- name: Start Docker Service 
+  service:
+    name: docker
+    state: started
+    enabled: yes 
